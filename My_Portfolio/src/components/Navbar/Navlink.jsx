@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu } from "@/components/animate-ui/icons/menu";
 import { AnimateIcon } from "@/components/animate-ui/icons/icon";
@@ -9,6 +9,29 @@ export default function Navlink() {
   const [active, setActive] = useState("Home");
 
   const [isTap, setIsTap] = useState(false);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return ()=>{
+      observer.disconnect();
+    }
+  },[]);
 
   return (
     <>
@@ -87,7 +110,8 @@ export default function Navlink() {
         ))}
       </nav>
       <div className="lg:hidden flex flex-col relative ">
-        <AnimateIcon animateOnHover
+        <AnimateIcon
+          animateOnHover
           onTap={() => setIsTap(!isTap)}
           className={`relative z-10 p-2 rounded-lg ${isTap ? "bg-accent/20" : "bg-primary/20"}`}
         >

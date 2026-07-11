@@ -1,0 +1,144 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+const Experience = () => {
+  return (
+    <div className="flex flex-col items-center justify-center py-35 gap-20">
+      <div>
+        <h1 className="text-4xl text-secondary font-extrabold mb-4">
+          My Experience
+        </h1>
+      </div>
+      <div className="w-[65%] h-[680px] bg-secondary/95 p-10 overflow-y-auto flex flex-col gap-5 scrollbar-hide">
+        <div className="group flex gap-10 p-8 transition-all duration-300 hover:bg-primary/10 hover:scale-[1.02]">
+          <div className="min-w-[170px]">
+            <p className="text-primary/70 text-sm font-medium">
+              Aug 2025 – Dec 2025
+            </p>
+          </div>
+
+          <div className="flex-1">
+            <h2 className="text-3xl font-extrabold text-primary transition-colors group-hover:text-accent">
+              Application Development Intern
+            </h2>
+
+            <p className="mt-1 text-primary/70 font-medium">
+              Nexanova Pro Tech
+            </p>
+
+            <p className="mt-5 leading-8 text-primary/80">
+              I worked on building responsive, interactive, and high-performance
+              web applications using React.js, Tailwind CSS, HTML, CSS,
+              JavaScript, and Java. I collaborated with the development team to
+              design and implement new features, integrate frontend and backend
+              functionality, debug issues, optimize performance, and improve
+              overall application quality. Throughout the internship, I gained
+              practical experience across the complete software development
+              lifecycle, from requirement analysis and development to testing
+              and deployment, while strengthening my skills in building scalable
+              applications with clean code and intuitive user experiences.
+            </p>
+            <div className="flex items-center gap-4 pt-4">
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                Java
+              </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                JavaScript
+              </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                React.js
+              </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                Tailwind Css
+              </motion.span>
+            </div>
+          </div>
+        </div>
+        <div className="group flex gap-10 p-8 transition-all duration-300 hover:bg-primary/10 hover:scale-[1.02]">
+          <div className="min-w-[170px]">
+            <p className="text-primary/70 text-sm font-medium">
+              Jun 2025 – Aug 2025
+            </p>
+          </div>
+
+          <div className="flex-1">
+            <h2 className="text-3xl font-extrabold text-primary transition-colors group-hover:text-accent">
+              Web Development Intern
+            </h2>
+
+            <p className="mt-1 text-primary/70 font-medium">kootumb Pvt Ltb</p>
+
+            <p className="mt-5 leading-8 text-primary/80">
+              During my experience as a Frontend Developer, I focused on
+              creating fast, responsive, and visually engaging web applications
+              using React.js, JavaScript, and Tailwind CSS. I designed reusable
+              UI components, integrated REST APIs, and optimized application
+              performance to deliver seamless user experiences across devices.
+              Beyond frontend development, I collaborated on full-stack
+              features, worked within Git-based development workflows, and
+              contributed to building scalable, maintainable applications while
+              continuously improving code quality and user experience.
+            </p>
+            <div className="flex gap-4 pt-4 items-center">
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                React.js
+              </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                Node.js
+              </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                JavaScript
+              </motion.span>
+
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="px-3 py-2 bg-primary/95 text-accent rounded-full text-bold"
+              >
+                Tailwind Css
+              </motion.span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Experience;

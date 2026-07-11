@@ -33,10 +33,10 @@ const Home = () => {
     <div className="relative px-5 lg:px-20 flex flex-col lg:flex-row lg:gap-30 justify-between min-h-[93.5dvh] lg:min-h-[90dvh] pb-10 pointer-events-none">
       <div className="flex flex-col gap-5 lg:gap-10 flex-1 justify-center lg:ml-20">
         <div className="leading-none tracking-tighter">
-          <h3 className="text-[60px] lg:text-[80px] font-[900] text-accent">
+          <h3 className="text-[60px] lg:text-[80px] font-black text-accent">
             Full Stack
           </h3>
-          <h3 className="text-[60px] lg:text-[80px] font-[900] pl-4">
+          <h3 className="text-[60px] lg:text-[80px] font-black pl-4">
             Developer
           </h3>
         </div>
@@ -75,6 +75,13 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <motion.div
+        animate={{ y: [0, -8, 0] }}
+        transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
+        className="absolute top-10 right-30 scale-200"
+      >
+        <img src="./public/arrow-up-double-stroke-rounded.svg" alt="Arrow" />
+      </motion.div>
       <motion.div className="hidden lg:flex lg:scale-105 justify-center items-center">
         <img src="./public/Frame.svg" alt="Image" />
       </motion.div>
