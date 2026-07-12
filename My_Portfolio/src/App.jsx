@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Section/Home";
 import Experience from "./components/Section/Experience";
 import CursorPet from "./components/CreatedAnimation/CursorPet";
+import Projects from "./components/Section/Projects";
 function App() {
   return (
     <div
@@ -49,6 +50,11 @@ function App() {
         >
           <Experience />
         </section>
+
+        <section id="Projects">
+          <Projects />
+        </section>
+        <section id="Contact"></section>
       </main>
     </div>
   );

@@ -82,7 +82,7 @@ const CursorPet = () => {
   }, []);
 
   return (
-    <motion.div
+    <motion.img
       style={{
         x,
         y,
@@ -92,13 +92,12 @@ const CursorPet = () => {
       }}
       className="
         fixed
-        w-15
-        h-15
-        rounded-full
-        bg-accent
+        w-10
+        h-10
         pointer-events-none
         z-[9999]
       "
+      src="/angry-bird-stroke-rounded.svg"
     />
   );
 };

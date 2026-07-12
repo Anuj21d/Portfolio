@@ -1,6 +1,7 @@
 import React from "react";
 import ResumeButton from "../Navbar/ResumeButton";
 import { motion } from "framer-motion";
+import TechStack from "../TechStack";
 
 const Home = () => {
   const linkLogos = [
@@ -82,9 +83,9 @@ const Home = () => {
       >
         <img src="./public/arrow-up-double-stroke-rounded.svg" alt="Arrow" />
       </motion.div>
-      <motion.div className="hidden lg:flex lg:scale-105 justify-center items-center">
-        <img src="./public/Frame.svg" alt="Image" />
-      </motion.div>
+      <div>
+        <TechStack />
+      </div>
       <div className="flex lg:absolute lg:bottom-10 lg:right-30 justify-between items-center px-8 lg:gap-8">
         <div className="flex flex-col text-center">
           <span className="text-[28px] text-accent font-extrabold lg:text-[30px]">

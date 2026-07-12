@@ -1,11 +1,21 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { easeIn, motion } from "framer-motion";
 
 const Experience = () => {
   return (
     <div className="flex flex-col items-center justify-center py-35 gap-20">
       <div>
-        <h1 className="text-4xl text-secondary font-extrabold mb-4">
+        <h1 className="text-4xl text-secondary font-black mb-4 flex gap-8">
+          <motion.img
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1.4 }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+            }}
+            src="/3d-scale-stroke-rounded.svg"
+            alt=""
+          />
           My Experience
         </h1>
       </div>
