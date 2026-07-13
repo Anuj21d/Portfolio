@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu } from "@/components/animate-ui/icons/menu";
 import { AnimateIcon } from "@/components/animate-ui/icons/icon";
@@ -7,31 +7,65 @@ const menu = ["Home", "Experience", "Projects", "Contact"];
 
 export default function Navlink() {
   const [active, setActive] = useState("Home");
-
   const [isTap, setIsTap] = useState(false);
+  const isNavigating = useRef(false);
+  const navigationFrame = useRef(null);
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+
+    if (!section) return;
+
+    isNavigating.current = true;
+    cancelAnimationFrame(navigationFrame.current);
+    setActive(id);
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    const waitForDestination = () => {
+      const top = section.getBoundingClientRect().top;
+
+      if (top <= window.innerHeight * 0.55) {
+        isNavigating.current = false;
+        return;
+      }
+
+      navigationFrame.current = requestAnimationFrame(waitForDestination);
+    };
+
+    navigationFrame.current = requestAnimationFrame(waitForDestination);
+  };
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("main > section[id]");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            if (isNavigating.current) return;
             setActive(entry.target.id);
           }
         });
       },
-      { threshold: 0.5 }
+      // The Contact section is at the end of the page, so it cannot always
+      // occupy 50% of the viewport. Detect a section when it reaches the
+      // central reading area instead.
+      { rootMargin: "-20% 0px -45%", threshold: 0 },
     );
 
     sections.forEach((section) => {
       observer.observe(section);
     });
 
-    return ()=>{
+    return () => {
       observer.disconnect();
-    }
-  },[]);
+      cancelAnimationFrame(navigationFrame.current);
+    };
+  }, []);
 
   return (
     <>
@@ -39,27 +73,31 @@ export default function Navlink() {
         {menu.map((item) => (
           <motion.button
             key={item}
-            onClick={() => setActive(item)}
+            type="button"
+            onClick={() => {
+              scrollToSection(item);
+            }}
+            animate={{ scale: active === item ? 1.1 : 1 }}
             whileHover={{
-              scale: 1.1,
+              scale: active === item ? 1.1 : 1.05,
             }}
             whileTap={{
-              scale: 0.9,
+              scale: 0.97,
             }}
             transition={{
               type: "spring",
-              stiffness: 300,
-              damping: 25,
+              stiffness: 400,
+              damping: 30,
             }}
-            className={`relative px-5 py-2 text-lg ${active === item ? "scale-110 text-accent font-bold" : "text-secondary/80"}`}
+            className={`relative px-5 py-2 text-lg transition-colors duration-200 ${active === item ? "text-accent font-bold" : "text-secondary/80"}`}
           >
             {active === item && (
               <motion.div
                 layoutId="active-nav"
                 transition={{
                   type: "spring",
-                  stiffness: 300,
-                  damping: 25,
+                  stiffness: 400,
+                  damping: 30,
                 }}
                 className="absolute inset-0"
               >
@@ -122,11 +160,12 @@ export default function Navlink() {
             {menu.map((item) => (
               <button
                 key={item}
+                type="button"
                 onClick={() => {
-                  setActive(item);
                   setIsTap(false);
+                  scrollToSection(item);
                 }}
-                className={`px-5 py-2 border-b-[0.5px] border-secondary/10 text-lg ${active === item ? "scale-110 text-accent font-bold" : "text-secondary/80"}`}
+                className={`px-5 py-2 border-b-[0.5px] border-secondary/10 text-lg transition-colors duration-200 ${active === item ? "text-accent font-bold" : "text-secondary/80"}`}
               >
                 {item}
               </button>

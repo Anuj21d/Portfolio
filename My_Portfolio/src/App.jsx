@@ -5,17 +5,18 @@ import Home from "./components/Section/Home";
 import Experience from "./components/Section/Experience";
 import CursorPet from "./components/CreatedAnimation/CursorPet";
 import Projects from "./components/Section/Projects";
+import Contact from "./components/Section/Contact";
 function App() {
   return (
     <div
       className="
-    relative 
-    flex flex-col
-    min-h-[100dvh]
-    overflow-hidden
-    bg-primary
-    font-main
-  "
+  relative
+  flex
+  flex-col
+  min-h-[100dvh]
+  bg-primary
+  font-main
+"
     >
       <GridPattern
         className="
@@ -30,13 +31,14 @@ function App() {
         <p>anujwork2410@gmail.com</p>
       </div>
 
-      <main className="flex-1 pt-15 lg:pt-20">
+      <main className="flex-1 pt-15 lg:pt-30">
         <section
           id="Home"
           className="
         min-h-[80dvh]
         z-10
         py-[2px]
+        scroll-mt-30
       "
         >
           <Home />
@@ -46,15 +48,18 @@ function App() {
           id="Experience"
           className="
         z-10
+        scroll-mt-24
       "
         >
           <Experience />
         </section>
 
-        <section id="Projects">
+        <section id="Projects" className="scroll-mt-24">
           <Projects />
         </section>
-        <section id="Contact"></section>
+        <section id="Contact" className="min-h-[80vh] scroll-mt-28">
+          <Contact />
+        </section>
       </main>
     </div>
   );
