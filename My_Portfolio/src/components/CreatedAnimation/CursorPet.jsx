@@ -111,7 +111,7 @@ const CursorPet = () => {
         left: 0,
         display: "block",
       }}
-      className="w-10 h-10 pointer-events-none z-[9999] select-none"
+      className="hidden lg:block w-10 h-10 pointer-events-none z-[9999] select-none"
       draggable={false}
     />
   );
