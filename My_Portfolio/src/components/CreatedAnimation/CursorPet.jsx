@@ -1,7 +1,23 @@
 import { motion, useMotionValue, useSpring } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CursorPet = () => {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setEnabled(media.matches);
+
+    const handler = (e) => setEnabled(e.matches);
+
+    media.addEventListener("change", handler);
+
+    return () => media.removeEventListener("change", handler);
+  }, []);
+
+  // Don't render on touch devices
+  if (!enabled) return null;
+
   const cursorRef = useRef(null);
 
   const mouseX = useMotionValue(0);
@@ -47,7 +63,6 @@ const CursorPet = () => {
       const speed = Math.sqrt(dx * dx + dy * dy);
       const angle = Math.atan2(dy, dx) * (180 / Math.PI);
 
-      // Center the image on the cursor
       mouseX.set(e.clientX - 20);
       mouseY.set(e.clientY - 20);
 
@@ -71,35 +86,20 @@ const CursorPet = () => {
       };
     };
 
-    const showCursor = () => {
-      if (cursorRef.current) {
-        cursorRef.current.style.display = "block";
-      }
-    };
-
-    const hideCursor = () => {
-      if (cursorRef.current) {
-        cursorRef.current.style.display = "none";
-      }
-    };
-
     window.addEventListener("mousemove", move);
-    document.addEventListener("mouseenter", showCursor);
-    document.addEventListener("mouseleave", hideCursor);
 
     return () => {
       window.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseenter", showCursor);
-      document.removeEventListener("mouseleave", hideCursor);
       clearTimeout(timeout.current);
     };
-  }, [mouseX, mouseY, rotation, scaleX, scaleY]);
+  }, []);
 
   return (
     <motion.img
       ref={cursorRef}
       src="/angry-bird-stroke-rounded.svg"
       alt="Cursor Pet"
+      draggable={false}
       style={{
         x,
         y,
@@ -109,10 +109,8 @@ const CursorPet = () => {
         position: "fixed",
         top: 0,
         left: 0,
-        display: "block",
       }}
-      className="hidden lg:block w-10 h-10 pointer-events-none z-[9999] select-none"
-      draggable={false}
+      className="w-10 h-10 pointer-events-none z-[9999] select-none"
     />
   );
 };
