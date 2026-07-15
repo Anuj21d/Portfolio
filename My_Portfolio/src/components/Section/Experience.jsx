@@ -36,7 +36,7 @@ const Experience = () => {
               Nexanova Pro Tech
             </p>
 
-            <p className="mt-5 leading-8 text-primary/80">
+            <p className="mt-5 lg:leading-8 text-primary/80 text-sm lg:text-lg">
               I worked on building responsive, interactive, and high-performance
               web applications using React.js, Tailwind CSS, HTML, CSS,
               JavaScript, and Java. I collaborated with the development team to
@@ -44,7 +44,7 @@ const Experience = () => {
               functionality, debug issues, optimize performance, and improve
               overall application quality. 
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-4 pt-4 ">
               <motion.span
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -94,7 +94,7 @@ const Experience = () => {
 
             <p className="mt-1 text-primary/70 font-medium">kootumb Pvt Ltb</p>
 
-            <p className="mt-5 leading-8 text-primary/80">
+            <p className="mt-5 lg:leading-8 text-primary/80 text-sm lg:text-lg">
               During my experience as a Frontend Developer, I focused on
               creating fast, responsive, and visually engaging web applications
               using React.js, JavaScript, and Tailwind CSS. I designed reusable
