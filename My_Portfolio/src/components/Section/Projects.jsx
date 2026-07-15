@@ -74,7 +74,7 @@ const Projects = () => {
     return () => media.removeEventListener("change", handler);
   }, []);
   return (
-    <div className="flex flex-col pb-5 lg:p-10 gap-15 lg:gap-25 w-full lg:w-[70vw] m-auto">
+    <div className="m-auto flex w-full flex-col gap-12 px-4 pb-8 sm:gap-15 sm:px-6 lg:w-[70vw] lg:gap-25 lg:p-10">
       <div className="flex gap-5 justify-center">
         <motion.img
           initial={{ scale: 1.1 }}
@@ -90,14 +90,14 @@ const Projects = () => {
           Projects <span className="text-accent">Built</span>
         </h2>
       </div>
-      <div className="flex flex-col gap-15 border-y border-secondary/50 p-10">
+      <div className="flex flex-col gap-10 border-y border-secondary/50 py-6 sm:gap-15 sm:p-10">
         {projects.map((project) => (
           <motion.div
             initial={canHover ? "rest" : false}
             whileHover={canHover ? "hover" : undefined}
             animate={!canHover ? "hover" : undefined}
             key={project.id}
-            className="group cursor-pointer py-6 border-b border-secondary/20 flex gap-10"
+            className="group flex gap-10 border-b border-secondary/20 py-6"
           >
             <div>
               <motion.h2

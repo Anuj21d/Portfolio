@@ -3,7 +3,7 @@ import { easeIn, motion } from "framer-motion";
 
 const Experience = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-30 lg:py-35 gap-20">
+    <div className="flex flex-col items-center justify-center gap-10 px-4 py-16 sm:gap-14 sm:py-20 lg:gap-20 lg:px-0 lg:py-35">
       <div>
         <h1 className="text-4xl text-secondary font-black mb-4 flex gap-8">
           <motion.img
@@ -19,9 +19,9 @@ const Experience = () => {
           My Experience
         </h1>
       </div>
-      <div className="w-full lg:w-[65%] h-[680px] bg-secondary/95 p-10 overflow-y-auto flex flex-col gap-5 scrollbar-hide">
-        <div className="group flex flex-col lg:flex-row gap-10 p-8 transition-all duration-300 hover:bg-primary/10 hover:scale-[1.02]">
-          <div className="min-w-[170px]">
+      <div className="flex w-full flex-col gap-5 bg-secondary/95 p-4 sm:p-6 lg:h-[680px] lg:w-[65%] lg:overflow-y-auto lg:p-10 scrollbar-hide">
+        <div className="group flex flex-col gap-6 p-4 transition-all duration-300 hover:bg-primary/10 lg:flex-row lg:gap-10 lg:p-8 lg:hover:scale-[1.02]">
+          <div className="lg:min-w-[170px]">
             <p className="text-primary/70 text-sm font-medium">
               Aug 2025 – Dec 2025
             </p>
@@ -80,8 +80,8 @@ const Experience = () => {
             </div>
           </div>
         </div>
-        <div className="group flex flex-col lg:flex-row gap-10 p-8 transition-all duration-300 hover:bg-primary/10 hover:scale-[1.02]">
-          <div className="min-w-[170px]">
+        <div className="group flex flex-col gap-6 p-4 transition-all duration-300 hover:bg-primary/10 lg:flex-row lg:gap-10 lg:p-8 lg:hover:scale-[1.02]">
+          <div className="lg:min-w-[170px]">
             <p className="text-primary/70 text-sm font-medium">
               Jun 2025 – Aug 2025
             </p>
