@@ -21,15 +21,27 @@ export default function Navlink() {
     cancelAnimationFrame(navigationFrame.current);
     setActive(id);
 
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+    // `scrollIntoView({ behavior: "smooth" })` is not consistently animated
+    // by mobile browsers. Scroll the page itself so menu navigation behaves the
+    // same on touch devices, while keeping the fixed navbar out of the way.
+    const headerHeight = document.querySelector("header")?.offsetHeight ?? 0;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const destination = Math.min(
+      Math.max(sectionTop - headerHeight - 16, 0),
+      maxScroll,
+    );
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    window.scrollTo({
+      top: destination,
+      behavior: reduceMotion ? "auto" : "smooth",
     });
 
     const waitForDestination = () => {
-      const top = section.getBoundingClientRect().top;
-
-      if (top <= window.innerHeight * 0.55) {
+      if (Math.abs(window.scrollY - destination) < 2) {
         isNavigating.current = false;
         return;
       }

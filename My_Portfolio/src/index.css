@@ -18,6 +18,18 @@
 
   --font-main: "Lato", sans-serif;
 }
-html {
+html,
+body {
   scroll-behavior: smooth;
+}
+
+@media (max-width: 1023px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    overflow-x: clip;
+    touch-action: pan-y pinch-zoom;
+  }
 }

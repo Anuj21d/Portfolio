@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 z-50 flex w-full items-center justify-between lg:px-16 lg:py-6 px-6 py-3 bg-primary/40 backdrop-blur-lg">
+    <header className="fixed top-0 left-0 z-50 flex w-full items-center justify-between lg:px-16 lg:py-6 px-6 py-3 bg-primary/40 backdrop-blur-lg">
       <h1
         onMouseEnter={handleMouseEnter}
         className="flex gap-1 text-xl lg:text-4xl font-[800] cursor-pointer transition-all duration-300 ease-in-out hover:scale-110"
@@ -46,7 +46,7 @@ const Navbar = () => {
         href="https://drive.google.com/file/d/1tRTRvJ92qe_-f8fwg7LeYtkb8Sg8XJwT/view?usp=sharing"
         className={"hidden lg:inline-block"}
       />
-    </div>
+    </header>
   );
 };
 
