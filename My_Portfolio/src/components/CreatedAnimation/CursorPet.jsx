@@ -4,20 +4,6 @@ import { useEffect, useRef, useState } from "react";
 const CursorPet = () => {
   const [enabled, setEnabled] = useState(false);
 
-  useEffect(() => {
-    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
-    setEnabled(media.matches);
-
-    const handler = (e) => setEnabled(e.matches);
-
-    media.addEventListener("change", handler);
-
-    return () => media.removeEventListener("change", handler);
-  }, []);
-
-  // Don't render on touch devices
-  if (!enabled) return null;
-
   const cursorRef = useRef(null);
 
   const mouseX = useMotionValue(0);
@@ -55,7 +41,25 @@ const CursorPet = () => {
     damping: 20,
   });
 
+  // Detect if device supports hover (desktop/laptop)
   useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    setEnabled(media.matches);
+
+    const handler = (e) => setEnabled(e.matches);
+
+    media.addEventListener("change", handler);
+
+    return () => {
+      media.removeEventListener("change", handler);
+    };
+  }, []);
+
+  // Mouse movement
+  useEffect(() => {
+    if (!enabled) return;
+
     const move = (e) => {
       const dx = e.clientX - last.current.x;
       const dy = e.clientY - last.current.y;
@@ -92,7 +96,10 @@ const CursorPet = () => {
       window.removeEventListener("mousemove", move);
       clearTimeout(timeout.current);
     };
-  }, []);
+  }, [enabled, mouseX, mouseY, rotation, scaleX, scaleY]);
+
+  // Render nothing on touch devices
+  if (!enabled) return null;
 
   return (
     <motion.img
@@ -110,7 +117,7 @@ const CursorPet = () => {
         top: 0,
         left: 0,
       }}
-      className="w-10 h-10 pointer-events-none z-[9999] select-none"
+      className="w-10 h-10 pointer-events-none select-none z-[9999]"
     />
   );
 };
