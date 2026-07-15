@@ -136,7 +136,7 @@ function App() {
                 ease: "easeOut",
               }}
               id="Contact"
-              className="min-h-[80vh] scroll-mt-28"
+              className="min-h-[80vh] scroll-mt-10 lg:scroll-mt-28"
             >
               <Contact />
             </motion.section>
