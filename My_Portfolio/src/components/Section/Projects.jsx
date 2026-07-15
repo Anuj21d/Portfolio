@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { GitBranch, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Projects = () => {
   const projects = [
@@ -58,8 +59,22 @@ const Projects = () => {
       live: "https://task-managment-react-sandy.vercel.app/",
     },
   ];
+
+  const [canHover, setCanHover] = useState(true);
+
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover)");
+
+    setCanHover(media.matches);
+
+    const handler = (e) => setCanHover(e.matches);
+
+    media.addEventListener("change", handler);
+
+    return () => media.removeEventListener("change", handler);
+  }, []);
   return (
-    <div className="flex flex-col p-10 gap-25 w-[70vw] m-auto">
+    <div className="flex flex-col pb-5 lg:p-10 gap-15 lg:gap-25 w-full lg:w-[70vw] m-auto">
       <div className="flex gap-5 justify-center">
         <motion.img
           initial={{ scale: 1.1 }}
@@ -68,7 +83,7 @@ const Projects = () => {
             duration: 2,
             repeat: Infinity,
           }}
-          src="/public/megaphone-01-stroke-rounded.svg"
+          src="/megaphone-01-stroke-rounded.svg"
           alt=""
         />
         <h2 className="text-4xl font-black text-secondary">
@@ -78,17 +93,10 @@ const Projects = () => {
       <div className="flex flex-col gap-15 border-y border-secondary/50 p-10">
         {projects.map((project) => (
           <motion.div
-            variants={{
-              rest: {
-                x: 0,
-              },
-              hover: {
-                x: 15,
-              },
-            }}
+            initial={canHover ? "rest" : false}
+            whileHover={canHover ? "hover" : undefined}
+            animate={!canHover ? "hover" : undefined}
             key={project.id}
-            initial="rest"
-            whileHover="hover"
             className="group cursor-pointer py-6 border-b border-secondary/20 flex gap-10"
           >
             <div>
@@ -119,9 +127,11 @@ const Projects = () => {
                   duration: 0.35,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-                className="overflow-hidden"
+                className="overflow-hidden w-full"
               >
-                <p className="mr-30 text-secondary/70">{project.description}</p>
+                <p className="lg:pr-20 text-secondary/70">
+                  {project.description}
+                </p>
               </motion.div>
 
               <motion.div
@@ -139,7 +149,7 @@ const Projects = () => {
                 }}
                 className="mt-5 flex flex-wrap gap-2"
               >
-                <div className="flex gap-4 w-full">
+                <div className="flex flex-wrap gap-4 w-full">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
@@ -190,7 +200,7 @@ const Projects = () => {
                 duration: 0.35,
                 ease: [0.76, 0, 0.24, 1],
               }}
-              className="relative p-4 bg-secondary/80 shadow-2xl"
+              className="hidden lg:block relative p-4 bg-secondary/80 shadow-2xl"
             >
               <motion.div
                 variants={{

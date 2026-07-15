@@ -1,11 +1,9 @@
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-} from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { useEffect, useRef } from "react";
 
 const CursorPet = () => {
+  const cursorRef = useRef(null);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -14,7 +12,7 @@ const CursorPet = () => {
   const scaleY = useMotionValue(1);
 
   const last = useRef({ x: 0, y: 0 });
-  const timeout = useRef();
+  const timeout = useRef(null);
 
   const x = useSpring(mouseX, {
     stiffness: 250,
@@ -47,9 +45,9 @@ const CursorPet = () => {
       const dy = e.clientY - last.current.y;
 
       const speed = Math.sqrt(dx * dx + dy * dy);
-
       const angle = Math.atan2(dy, dx) * (180 / Math.PI);
 
+      // Center the image on the cursor
       mouseX.set(e.clientX - 20);
       mouseY.set(e.clientY - 20);
 
@@ -73,31 +71,48 @@ const CursorPet = () => {
       };
     };
 
+    const showCursor = () => {
+      if (cursorRef.current) {
+        cursorRef.current.style.display = "block";
+      }
+    };
+
+    const hideCursor = () => {
+      if (cursorRef.current) {
+        cursorRef.current.style.display = "none";
+      }
+    };
+
     window.addEventListener("mousemove", move);
+    document.addEventListener("mouseenter", showCursor);
+    document.addEventListener("mouseleave", hideCursor);
 
     return () => {
       window.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseenter", showCursor);
+      document.removeEventListener("mouseleave", hideCursor);
       clearTimeout(timeout.current);
     };
-  }, []);
+  }, [mouseX, mouseY, rotation, scaleX, scaleY]);
 
   return (
     <motion.img
+      ref={cursorRef}
+      src="/angry-bird-stroke-rounded.svg"
+      alt="Cursor Pet"
       style={{
         x,
         y,
         rotate,
         scaleX: sx,
         scaleY: sy,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        display: "block",
       }}
-      className="
-        fixed
-        w-10
-        h-10
-        pointer-events-none
-        z-[9999]
-      "
-      src="/angry-bird-stroke-rounded.svg"
+      className="w-10 h-10 pointer-events-none z-[9999] select-none"
+      draggable={false}
     />
   );
 };

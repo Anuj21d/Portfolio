@@ -7,25 +7,25 @@ const Home = () => {
   const linkLogos = [
     {
       id: 1,
-      src: "./public/linkedin-02-stroke-rounded.svg",
+      src: "/linkedin-02-stroke-rounded.svg",
       href: "https://www.linkedin.com/in/anuj-dandavate-254482363/",
       alt: "Linkdin Logo",
     },
     {
       id: 2,
-      src: "./public/github-stroke-rounded.svg",
+      src: "/github-stroke-rounded.svg",
       href: "https://github.com/Anuj21d",
       alt: "Github Logo",
     },
     {
       id: 3,
-      src: "./public/mail-at-sign-01-stroke-rounded.svg",
+      src: "/mail-at-sign-01-stroke-rounded.svg",
       href: "mailto:anujwork2410@gmail.com",
       alt: "Mail Logo",
     },
     {
       id: 4,
-      src: "./public/whatsapp-stroke-rounded.svg",
+      src: "/whatsapp-stroke-rounded.svg",
       href: "https://wa.me/+919209224604?text=Hi%20Anuj,%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect.",
       alt: "Whatsapp Logo",
     },
@@ -79,9 +79,9 @@ const Home = () => {
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
-        className="absolute top-10 right-30 scale-200"
+        className="hidden lg:absolute top-10 right-30 scale-200"
       >
-        <img src="./public/arrow-up-double-stroke-rounded.svg" alt="Arrow" />
+        <img src="./arrow-up-double-stroke-rounded.svg" alt="Arrow" />
       </motion.div>
       <div>
         <TechStack />

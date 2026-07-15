@@ -27,7 +27,7 @@ function App() {
       <CursorPet />
       <Navbar />
 
-      <div className="fixed bottom-50 z-10 left-0 text-lg text-secondary rotate-90">
+      <div className="hidden lg:fixed bottom-50 z-10 left-0 text-lg text-secondary rotate-90">
         <p>anujwork2410@gmail.com</p>
       </div>
 
@@ -47,8 +47,7 @@ function App() {
         <section
           id="Experience"
           className="
-        z-10
-        scroll-mt-24
+        scroll-mt-10 lg:scroll-mt-24
       "
         >
           <Experience />

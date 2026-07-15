@@ -57,7 +57,7 @@ export default function TechConstellation() {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="relative w-[650px] h-[650px] mx-auto flex items-center justify-center pointer-events-auto"
+      className="hidden relative w-[650px] h-[650px] mx-auto lg:flex items-center justify-center pointer-events-auto"
     >
       {logos.map((logo, index) => (
         <motion.div

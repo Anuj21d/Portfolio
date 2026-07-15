@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu } from "@/components/animate-ui/icons/menu";
 import { AnimateIcon } from "@/components/animate-ui/icons/icon";
+import MobileMenu from "./MobileMenu";
 
 const menu = ["Home", "Experience", "Projects", "Contact"];
 
@@ -148,30 +149,12 @@ export default function Navlink() {
         ))}
       </nav>
       <div className="lg:hidden flex flex-col relative ">
-        <AnimateIcon
-          animateOnHover
-          onTap={() => setIsTap(!isTap)}
-          className={`relative z-10 p-2 rounded-lg ${isTap ? "bg-accent/20" : "bg-primary/20"}`}
-        >
-          <Menu className="size-8" />
-        </AnimateIcon>
-        {isTap && (
-          <div className="absolute top-16 right-6 bg-primary shadow-2xl p-4 flex flex-col gap-4">
-            {menu.map((item) => (
-              <button
-                key={item}
-                type="button"
-                onClick={() => {
-                  setIsTap(false);
-                  scrollToSection(item);
-                }}
-                className={`px-5 py-2 border-b-[0.5px] border-secondary/10 text-lg transition-colors duration-200 ${active === item ? "text-accent font-bold" : "text-secondary/80"}`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        )}
+        <MobileMenu
+          active={active}
+          isTap={isTap}
+          setIsTap={setIsTap}
+          scrollToSection={scrollToSection}
+        />
       </div>
     </>
   );
