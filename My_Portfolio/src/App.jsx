@@ -27,7 +27,7 @@ function App() {
       <CursorPet />
       <Navbar />
 
-      <div className="hidden lg:fixed bottom-50 z-10 left-0 text-lg text-secondary rotate-90">
+      <div className="hidden lg:block fixed bottom-50 z-10 left-0 text-lg text-secondary rotate-90">
         <p>anujwork2410@gmail.com</p>
       </div>
 
