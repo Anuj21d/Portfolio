@@ -53,51 +53,23 @@ function App() {
           </div>
 
           <main className="flex-1 pt-15 lg:pt-30">
-            <motion.section
-              initial={{
-                opacity: 0,
-                y: 80,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: "easeOut",
-              }}
+            <section
+              
               id="Home"
               className="min-h-[80dvh] py-[2px] scroll-mt-30"
             >
               <Home />
-            </motion.section>
+            </section>
 
-            <motion.section
-              initial={{
-                opacity: 0,
-                y: 80,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: "easeOut",
-              }}
+            <section
+              
               id="Experience"
               className="scroll-mt-10 lg:scroll-mt-24"
             >
               <Experience />
-            </motion.section>
+            </section>
 
-            <motion.section
+            <section
               initial={{
                 opacity: 0,
                 y: 80,
@@ -117,29 +89,15 @@ function App() {
               className="scroll-mt-24"
             >
               <Projects />
-            </motion.section>
+            </section>
 
-            <motion.section
-              initial={{
-                opacity: 0,
-                y: 80,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: "easeOut",
-              }}
+            <section
+              
               id="Contact"
               className="min-h-[80vh] scroll-mt-10 lg:scroll-mt-28"
             >
               <Contact />
-            </motion.section>
+            </section>
           </main>
         </motion.div>
       )}
