@@ -7,7 +7,7 @@ import CursorPet from "./components/CreatedAnimation/CursorPet";
 import Projects from "./components/Section/Projects";
 import Contact from "./components/Section/Contact";
 import { useEffect, useState } from "react";
-import { AnimatePresence , motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Loader from "./components/Loader";
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,16 +22,14 @@ function App() {
 
   return (
     <>
-      <AnimatePresence mode="wait">
-        {loading && <Loader />}
-      </AnimatePresence>
+      <AnimatePresence mode="wait">{loading && <Loader />}</AnimatePresence>
 
       {!loading && (
         <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="
       relative
       flex
       flex-col
@@ -39,7 +37,7 @@ function App() {
       bg-primary
       font-main
     "
-  >
+        >
           <GridPattern
             className="
               absolute inset-0
@@ -55,30 +53,93 @@ function App() {
           </div>
 
           <main className="flex-1 pt-15 lg:pt-30">
-            <section
+            <motion.section
+              initial={{
+                opacity: 0,
+                y: 80,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
               id="Home"
               className="min-h-[80dvh] py-[2px] scroll-mt-30"
             >
               <Home />
-            </section>
+            </motion.section>
 
-            <section
+            <motion.section
+              initial={{
+                opacity: 0,
+                y: 80,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
               id="Experience"
               className="scroll-mt-10 lg:scroll-mt-24"
             >
               <Experience />
-            </section>
+            </motion.section>
 
-            <section id="Projects" className="scroll-mt-24">
+            <motion.section
+              initial={{
+                opacity: 0,
+                y: 80,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
+              id="Projects"
+              className="scroll-mt-24"
+            >
               <Projects />
-            </section>
+            </motion.section>
 
-            <section
+            <motion.section
+              initial={{
+                opacity: 0,
+                y: 80,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
               id="Contact"
               className="min-h-[80vh] scroll-mt-28"
             >
               <Contact />
-            </section>
+            </motion.section>
           </main>
         </motion.div>
       )}
@@ -87,4 +148,3 @@ function App() {
 }
 
 export default App;
-
